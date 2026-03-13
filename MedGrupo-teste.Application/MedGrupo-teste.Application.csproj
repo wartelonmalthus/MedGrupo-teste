@@ -5,6 +5,10 @@
     <RootNamespace>MedGrupo_teste.Application</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-  </PropertyGroup>
+</PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MedGrupo-teste.Domain\MedGrupo-teste.Domain.csproj" />
+  </ItemGroup>
 
 </Project>

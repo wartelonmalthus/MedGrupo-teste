@@ -5,6 +5,15 @@
     <RootNamespace>MedGrupo_teste.Infraestructure</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-  </PropertyGroup>
+</PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MedGrupo-teste.Application\MedGrupo-teste.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.13" />
+  </ItemGroup>
 
 </Project>
