@@ -1,0 +1,6 @@
+@MedGrupo_teste.Api_HostAddress = http://localhost:5231
+
+GET {{MedGrupo_teste.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
