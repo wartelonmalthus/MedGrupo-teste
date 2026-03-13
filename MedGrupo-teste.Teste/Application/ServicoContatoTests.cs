@@ -69,6 +69,23 @@ public sealed class ServicoContatoTests
         Assert.Equal("Maria Silva", resultado.Itens.Single().Nome);
     }
 
+    [Fact]
+    public async Task AtualizarAsync_DeveAlterarSomenteCampoInformado()
+    {
+        var repositorio = new RepositorioContatoEmMemoria();
+        var contato = Contato.Criar("Carlos Souza", DateOnly.FromDateTime(DateTime.Today.AddYears(-20)), Sexo.Masculino);
+        await repositorio.AdicionarAsync(contato, CancellationToken.None);
+
+        var servico = new ServicoContato(repositorio);
+        var requisicao = new RequisicaoAtualizacaoContato("Carlos Silva", null, null);
+
+        var atualizado = await servico.AtualizarAsync(contato.Id, requisicao, CancellationToken.None);
+
+        Assert.Equal("Carlos Silva", atualizado.Nome);
+        Assert.Equal(Sexo.Masculino, atualizado.Sexo);
+        Assert.Equal(contato.DataNascimento, atualizado.DataNascimento);
+    }
+
     private sealed class RepositorioContatoEmMemoria : IRepositorioContato
     {
         private readonly List<Contato> _contatos = [];

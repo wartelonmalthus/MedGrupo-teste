@@ -49,4 +49,27 @@ public sealed class ContatoTests
 
         Assert.False(contato.EstaAtivo);
     }
+
+    [Fact]
+    public void Atualizar_DeveAlterarSomenteONome_QuandoApenasNomeForInformado()
+    {
+        var contato = Contato.Criar("Carlos Souza", DateOnly.FromDateTime(DateTime.Today.AddYears(-20)), Sexo.Masculino);
+
+        contato.Atualizar("Carlos Silva", null, null);
+
+        Assert.Equal("Carlos Silva", contato.Nome);
+        Assert.Equal(DateOnly.FromDateTime(DateTime.Today.AddYears(-20)), contato.DataNascimento);
+        Assert.Equal(Sexo.Masculino, contato.Sexo);
+    }
+
+    [Fact]
+    public void Atualizar_DeveLancarExcecao_QuandoNenhumCampoForInformado()
+    {
+        var contato = Contato.Criar("Carlos Souza", DateOnly.FromDateTime(DateTime.Today.AddYears(-20)), Sexo.Masculino);
+
+        var acao = () => contato.Atualizar(null, null, null);
+
+        var excecao = Assert.Throws<Exception>(acao);
+        Assert.Equal("Informe ao menos um campo para atualizar o contato.", excecao.Message);
+    }
 }

@@ -42,7 +42,7 @@ public sealed class ServicoContato
         return RespostaContato.DeEntidade(contato);
     }
 
-    public async Task<RespostaContato> AtualizarAsync(Guid id, RequisicaoContato requisicao, CancellationToken cancellationToken)
+    public async Task<RespostaContato> AtualizarAsync(Guid id, RequisicaoAtualizacaoContato requisicao, CancellationToken cancellationToken)
     {
         var contato = await _repositorioContato.ObterAtivoPorIdAsync(id, cancellationToken)
             ?? throw new Exception("Contato ativo nao encontrado.");

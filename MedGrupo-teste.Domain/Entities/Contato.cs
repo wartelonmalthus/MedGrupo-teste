@@ -42,10 +42,20 @@ public class Contato
         return idade;
     }
 
-    public void Atualizar(string nome, DateOnly dataNascimento, Sexo sexo)
+    public void Atualizar(string? nome, DateOnly? dataNascimento, Sexo? sexo)
     {
         GarantirQueEstaAtivo();
-        DefinirDados(nome, dataNascimento, sexo);
+
+        if (nome is null && dataNascimento is null && sexo is null)
+        {
+            throw new Exception("Informe ao menos um campo para atualizar o contato.");
+        }
+
+        var nomeFinal = nome ?? Nome;
+        var dataNascimentoFinal = dataNascimento ?? DataNascimento;
+        var sexoFinal = sexo ?? Sexo;
+
+        DefinirDados(nomeFinal, dataNascimentoFinal, sexoFinal);
         AtualizadoEmUtc = DateTime.UtcNow;
     }
 

@@ -57,10 +57,11 @@ public sealed class ContatosController : ControllerBase
     }
 
     [HttpPut("{id:guid}")]
+    [HttpPatch("{id:guid}")]
     [ProducesResponseType(typeof(RespostaContato), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Atualizar(Guid id, [FromBody] RequisicaoContato requisicao, CancellationToken cancellationToken)
+    public async Task<IActionResult> Atualizar(Guid id, [FromBody] RequisicaoAtualizacaoContato requisicao, CancellationToken cancellationToken)
     {
         try
         {
