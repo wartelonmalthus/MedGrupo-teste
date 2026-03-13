@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MedGrupo-teste.Application\MedGrupo-teste.Application.csproj" />
     <ProjectReference Include="..\MedGrupo-teste.Domain\MedGrupo-teste.Domain.csproj" />
+    <ProjectReference Include="..\MedGrupo-teste.Infraestructure\MedGrupo-teste.Infraestructure.csproj" />
   </ItemGroup>
 
 </Project>
